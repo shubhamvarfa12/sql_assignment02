@@ -1,0 +1,310 @@
+....................................................
+
+1). List all columns of OrderItem table.
+
+Select * from Order_Item;
++----------+-------------------+--------------------+-------------------+-------------+-------------------------+----------+-------------+
+| ORDER_ID | ORDER_ITEM_SEQ_ID | ORDER_ITEM_TYPE_ID | SHIP_GROUP_SEQ_ID | PRODUCT_ID  | ITEM_DESCRIPTION        | QUANTITY | UNIT_AMOUNT |
++----------+-------------------+--------------------+-------------------+-------------+-------------------------+----------+-------------+
+| 1051     | 01                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_1 | Demo Product Unit One   | 1.000000 |    16.99000 |
+| 1051     | 02                | PRODUCT_ORDER_ITEM | 02                | DEMO_UNIT_2 | Demo Product Unit Two   | 3.000000 |    18.99000 |
+| 1051     | 03                | RENTAL_ORDER_ITEM  | 02                | NULL        | Rental Item             | 3.000000 |     1.33000 |
+| 1052     | 01                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_3 | Demo Product Unit Three | 1.000000 |    14.99000 |
+| 1052     | 02                | RENTAL_ORDER_ITEM  | 01                | NULL        | Rental Item             | 1.000000 |     1.33000 |
+| 1061     | 01                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_2 | Demo Product Unit Two   | 2.000000 |    15.99000 |
+| 1061     | 02                | PRODUCT_ORDER_ITEM | 02                | DEMO_UNIT_5 | Demo Product Unit Five  | 1.000000 |    55.09000 |
+| 1064     | 01                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_5 | Demo Product Unit Five  | 3.000000 |    12.07000 |
+| 1064     | 02                | PRODUCT_ORDER_ITEM | 02                | DEMO_UNIT_2 | Demo Product Unit Two   | 2.000000 |     6.33000 |
+| 1102     | 01                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_1 | Demo Product Unit One   | 3.000000 |    16.99000 |
+| 1102     | 02                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_2 | Demo Product Unit Two   | 3.000000 |    18.99000 |
+| 1102     | 03                | RENTAL_ORDER_ITEM  | 01                | NULL        | Rental Item             | 3.000000 |     2.33000 |
+| 1102     | 04                | PRODUCT_ORDER_ITEM | 02                | DEMO_UNIT_3 | Demo Product Unit Three | 1.000000 |    14.99000 |
+| 1153     | 01                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_3 | Demo Product Unit Three | 1.000000 |    14.99000 |
+| 1153     | 02                | RENTAL_ORDER_ITEM  | 01                | NULL        | Rental Item             | 1.000000 |     1.33000 |
+| 1153     | 03                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_4 | Product Unit FourDemo   | 1.000000 |    12.99000 |
+| 1153     | 04                | RENTAL_ORDER_ITEM  | 01                | NULL        | Rental Item             | 1.000000 |     2.33000 |
+| 1255     | 01                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_4 | Demo Product Unit Four  | 3.000000 |    12.99000 |
+| 1255     | 02                | RENTAL_ORDER_ITEM  | 01                | NULL        | Rental Item             | 3.000000 |     1.33000 |
+| 1255     | 03                | PRODUCT_ORDER_ITEM | 02                | DEMO_UNIT_5 | Demo Product Unit Five  | 3.000000 |    10.99000 |
++----------+-------------------+--------------------+-------------------+-------------+-------------------------+----------+-------------+
+
+
+2).List the Person details for all females.
+
+select * from Person where Gender='F';
++-----------+------------+-------------+-----------+--------+------------+---------------------------+-------------------+
+| PARTY_ID  | FIRST_NAME | MIDDLE_NAME | LAST_NAME | GENDER | BIRTH_DATE | EMPLOYMENT_STATUS_ENUM_ID | OCCUPATION        |
++-----------+------------+-------------+-----------+--------+------------+---------------------------+-------------------+
+| CustDemo3 | Lily       | J           | Brown     | F      | 1998-06-11 | EMPS_PARTTIME             | Software Engineer |
+| CustDemo4 | John       | J           | Norvig    | F      | 1998-06-11 | EMPS_FULLTIME             | Software Engineer |
++-----------+------------+-------------+-----------+--------+------------+---------------------------+-------------------+
+
+
+3). List the OrderHeader table contents so that the latest placed order appears in the top.
+
+select * from Order_Header order by Order_Id desc;
+
++----------+---------------+--------------+-------------------------+----------------+-----------------+-------------------+-----------------------+-------------+
+| ORDER_ID | ORDER_TYPE_ID | ORDER_NAME   | ORDER_DATE              | STATUS_ID      | CURRENCY_UOM_ID | PRODUCT_STORE_ID  | SALES_CHANNEL_ENUM_ID | GRAND_TOTAL |
++----------+---------------+--------------+-------------------------+----------------+-----------------+-------------------+-----------------------+-------------+
+| 1255     | SALES_ORDER   | Test Order 5 | 2020-03-17 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |     75.9300 |
+| 1153     | SALES_ORDER   | Test Order 4 | 2020-04-19 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |     31.6400 |
+| 1102     | SALES_ORDER   | Test Order 3 | 2020-04-17 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |    129.9200 |
+| 1064     | SALES_ORDER   | Test Order 7 | 2022-01-09 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |     48.8700 |
+| 1061     | SALES_ORDER   | Test Order 6 | 2019-04-24 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |     87.0700 |
+| 1052     | SALES_ORDER   | Test Order 2 | 2020-04-17 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |     16.3200 |
+| 1051     | SALES_ORDER   | Test Order 1 | 2020-04-17 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |     77.9500 |
++----------+---------------+--------------+-------------------------+----------------+-----------------+-------------------+-----------------------+--
+
+4).Output the count of OrderItem Ship Group for each shipmentMethodTypeId.
+
+select Count(ship_group_seq_id) AS count_of_ship_group from order_item_ship_group group by shipment_method_type_Id;
++---------------------+
+| count_of_ship_group |
++---------------------+
+|                  12 |
++---------------------+
+
+5). List the OrderHeader details with grandTotal greater than 50.
+
+select Grand_Total from Order_Header where Grand_Total >= 50;
++-------------+
+| grand_total |
++-------------+
+|     77.9500 |
+|     87.0700 |
+|    129.9200 |
+|     75.9300 |
++-------------+
+
+6). List the Person details who have not placed any orders.
+
+select Party_Id, First_Name from Person where Party_Id NOT IN (Select Customer_Party_Id from Order_Item_Ship_Group);
++-----------+------------+
+| Party_Id  | First_Name |
++-----------+------------+
+| CustDemo2 | Jack       |
++-----------+------------+
+
+
+7).List the Person details who have not placed any orders.
+
+select FIRST_NAME from PERSON where FIRST_NAME LIKE 'j_h%';
++------------+
+| FIRST_NAME |
++------------+
+| John       |
++------------+
+
+8).List all OrderItem details for the order with orderId, 1102 and shipGroupSeqId, 01.
+
+select * from order_item where Order_Id = 1102 and SHIP_GROUP_SEQ_ID = 01;
+
++----------+-------------------+--------------------+-------------------+-------------+-----------------------+----------+-------------+
+| ORDER_ID | ORDER_ITEM_SEQ_ID | ORDER_ITEM_TYPE_ID | SHIP_GROUP_SEQ_ID | PRODUCT_ID  | ITEM_DESCRIPTION      | QUANTITY | UNIT_AMOUNT |
++----------+-------------------+--------------------+-------------------+-------------+-----------------------+----------+-------------+
+| 1102     | 01                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_1 | Demo Product Unit One | 3.000000 |    16.99000 |
+| 1102     | 02                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_2 | Demo Product Unit Two | 3.000000 |    18.99000 |
+| 1102     | 03                | RENTAL_ORDER_ITEM  | 01                | NULL        | Rental Item           | 3.000000 |     2.33000 |
++----------+-------------------+--------------------+-------------------+-------------+-----------------------+----------+-------------+
+
+
+9).List the OrderItem details for only those products for which chargeShipping is set to "Y". 
+
+select * from Order_Item where Product_Id IN (select product_Id from Product where charge_shipping = 'y' );
++----------+-------------------+--------------------+-------------------+-------------+-------------------------+----------+-------------+
+| ORDER_ID | ORDER_ITEM_SEQ_ID | ORDER_ITEM_TYPE_ID | SHIP_GROUP_SEQ_ID | PRODUCT_ID  | ITEM_DESCRIPTION        | QUANTITY | UNIT_AMOUNT |
++----------+-------------------+--------------------+-------------------+-------------+-------------------------+----------+-------------+
+| 1051     | 01                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_1 | Demo Product Unit One   | 1.000000 |    16.99000 |
+| 1102     | 01                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_1 | Demo Product Unit One   | 3.000000 |    16.99000 |
+| 1051     | 02                | PRODUCT_ORDER_ITEM | 02                | DEMO_UNIT_2 | Demo Product Unit Two   | 3.000000 |    18.99000 |
+| 1061     | 01                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_2 | Demo Product Unit Two   | 2.000000 |    15.99000 |
+| 1064     | 02                | PRODUCT_ORDER_ITEM | 02                | DEMO_UNIT_2 | Demo Product Unit Two   | 2.000000 |     6.33000 |
+| 1102     | 02                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_2 | Demo Product Unit Two   | 3.000000 |    18.99000 |
+| 1052     | 01                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_3 | Demo Product Unit Three | 1.000000 |    14.99000 |
+| 1102     | 04                | PRODUCT_ORDER_ITEM | 02                | DEMO_UNIT_3 | Demo Product Unit Three | 1.000000 |    14.99000 |
+| 1153     | 01                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_3 | Demo Product Unit Three | 1.000000 |    14.99000 |
+| 1153     | 03                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_4 | Product Unit FourDemo   | 1.000000 |    12.99000 |
+| 1255     | 01                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_4 | Demo Product Unit Four  | 3.000000 |    12.99000 |
+| 1061     | 02                | PRODUCT_ORDER_ITEM | 02                | DEMO_UNIT_5 | Demo Product Unit Five  | 1.000000 |    55.09000 |
+| 1064     | 01                | PRODUCT_ORDER_ITEM | 01                | DEMO_UNIT_5 | Demo Product Unit Five  | 3.000000 |    12.07000 |
+| 1255     | 03                | PRODUCT_ORDER_ITEM | 02                | DEMO_UNIT_5 | Demo Product Unit Five  | 3.000000 |    10.99000 |
++----------+-------------------+--------------------+-------------------+-------------+-------------------------+----------+-------------+
+
+10). List the Person details whose employment status is either EMPS_SELF or EMPS_FULLTIME without using the OR operator.
+
+Select * from Person where EMPLOYMENT_STATUS_ENUM_ID IN ("EMPS_FULLTIME", "EMPS_SELF");
++-----------+------------+-------------+-----------+--------+------------+---------------------------+-------------------+
+| PARTY_ID  | FIRST_NAME | MIDDLE_NAME | LAST_NAME | GENDER | BIRTH_DATE | EMPLOYMENT_STATUS_ENUM_ID | OCCUPATION        |
++-----------+------------+-------------+-----------+--------+------------+---------------------------+-------------------+
+| CustDemo1 | Joe        | Q           | Public    | M      | 1999-06-15 | EMPS_FULLTIME             | Software Engineer |
+| CustDemo2 | Jack       | John        | Smith     | M      | 1999-09-14 | EMPS_FULLTIME             | Doctor            |
+| CustDemo4 | John       | J           | Norvig    | F      | 1998-06-11 | EMPS_FULLTIME             | Software Engineer |
+| CustDemo5 | Charlie    | Jack        | William   | M      | 1992-04-22 | EMPS_SELF                 | Architect         |
+| CustDemo6 | James      | W           | Evans     | M      | 1993-05-20 | EMPS_FULLTIME             | Civil Engineer    |
++-----------+------------+-------------+-----------+--------+------------+---------------------------+-------------------+
+
+11). List all columns of Facility table.
+
+Select * from Facility;
++--------------------+---------------------+
+| FACILITY_ID        | FACILITY_NAME       |
++--------------------+---------------------+
+| RegionalWarehouse1 | Regional Warehouse1 |
+| RegionalWarehouse2 | Regional Warehouse2 |
+| WebStoreWarehouse  | Web Store Warehouse |
++--------------------+---------------------+
+
+12).Output the sum of the grandTotal from OrderHeader table for each order date.
+
+select sum(Grand_Total) AS Grand_Total from Order_Header where grand_Total IN (select Grand_Total from Order_Header group by Order_Date);
++-------------+
+| Grand_Total |
++-------------+
+|    467.7000 |
++-------------+
+
+13).List the OrderHeader records where grand total is greater than highest grand total of the order date on 2020-04-17.
+ 
+ Select * from order_header where GRAND_TOTAL > (select max(GRAND_TOTAL)from order_header where order_date='2020-04-17');
+
+
+
+14).Output the sum of the grandTotal from OrderHeader table for each order date where total sum is greater than 60.
+
+select sum(Grand_Total) AS Grand_Total from Order_Header where grand_Total IN (select Grand_Total from Order_Header where Grand_Total>=60 group by Order_Date );
++-------------+
+| Grand_Total |
++-------------+
+|    370.8700 |
++-------------+
+
+15).Output the Person's party Id, first name, last name and orderId for all customers who have order date 2020-04-17.
+
+Select * from PERSON where Party_Id IN (Select Customer_Party_Id from oOrder_Item_Ship_Group where Order_Id IN (Select Order_Id from Order_Header where Order_Date = '2020-04-17'));
++-----------+------------+-------------+-----------+--------+------------+---------------------------+-------------------+
+| PARTY_ID  | FIRST_NAME | MIDDLE_NAME | LAST_NAME | GENDER | BIRTH_DATE | EMPLOYMENT_STATUS_ENUM_ID | OCCUPATION        |
++-----------+------------+-------------+-----------+--------+------------+---------------------------+-------------------+
+| CustDemo1 | Joe        | Q           | Public    | M      | 1999-06-15 | EMPS_FULLTIME             | Software Engineer |
+| CustDemo3 | Lily       | J           | Brown     | F      | 1998-06-11 | EMPS_PARTTIME             | Software Engineer |
++-----------+------------+-------------+-----------+--------+------------+---------------------------+-------------------+
+
+	
+16).List the OrderHeader details for highest grandTotal for each order date.
+
+SELECT order_id, order_type_id, order_name, order_date, status_id, currency_uom_id, product_store_id, sales_channel_enum_id, MAX(grand_total) AS highest_grandTotal FROM order_header GROUP BY order_date;
++----------+---------------+--------------+-------------------------+----------------+-----------------+---------------------+-----------------------+--------------------+
+| order_id | order_type_id | order_name   | order_date              | status_id      | currency_uom_id | product_store_id    | sales_channel_enum_id | highest_grandTotal |
++----------+---------------+--------------+-------------------------+----------------+-----------------+---------------------+-----------------------+--------------------+
+| 1061     | SALES_ORDER   | Test Order 6 | 2019-04-24 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE   | WEB_SALES_CHANNEL     |            87.0700 |
+| 1255     | SALES_ORDER   | Test Order 5 | 2020-03-17 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE   | WEB_SALES_CHANNEL     |            75.9300 |
+| 1051     | SALES_ORDER   | Test Order 1 | 2020-04-17 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE   | WEB_SALES_CHANNEL     |           129.9200 |
+| 1153     | SALES_ORDER   | Test Order 4 | 2020-04-19 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE   | WEB_SALES_CHANNEL     |            31.6400 |
+| 1064     | SALES_ORDER   | Test Order 7 | 2022-01-09 00:00:00.000 | ORDER_APPROVED | USD             | OMS_CCDEFAULT_STORE | WEB_SALES_CHANNEL     |            48.8700 |
++----------+---------------+--------------+-------------------------+----------------+-----------------+---------------------+-----------------------+--------------------+
+
+
+17). Find the count of order item ship group for each Person. Output the below details for this query:
+
+	
+
+18).Output the customerPartyId and highest order grandTotal for each customer.	
+
+select Customer_party_id from order_header inner join order_item_ship_group on order_header.order_id = order_item_ship_group.order_Id group by order_item_ship_group.customer_party_id;
++-------------------+
+| Customer_party_id |
++-------------------+
+| CustDemo1         |
+| CustDemo3         |
+| CustDemo4         |
+| CustDemo5         |
+| CustDemo6         |
++-------------------+
+
+19).List the unique order Ids for the Order Headers with more than one orderItem ShipGroup.
+
+Select * from order_item inner join order_header on order_item.order_id = order_header.order_id where order_item.ship_group_seq_id>1;
++----------+-------------------+--------------------+-------------------+-------------+-------------------------+----------+-------------+----------+---------------+--------------+-------------------------+----------------+-----------------+-------------------+-----------------------+-------------+
+| ORDER_ID | ORDER_ITEM_SEQ_ID | ORDER_ITEM_TYPE_ID | SHIP_GROUP_SEQ_ID | PRODUCT_ID  | ITEM_DESCRIPTION        | QUANTITY | UNIT_AMOUNT | ORDER_ID | ORDER_TYPE_ID | ORDER_NAME   | ORDER_DATE              | STATUS_ID      | CURRENCY_UOM_ID | PRODUCT_STORE_ID  | SALES_CHANNEL_ENUM_ID | GRAND_TOTAL |
++----------+-------------------+--------------------+-------------------+-------------+-------------------------+----------+-------------+----------+---------------+--------------+-------------------------+----------------+-----------------+-------------------+-----------------------+-------------+
+| 1051     | 02                | PRODUCT_ORDER_ITEM | 02                | DEMO_UNIT_2 | Demo Product Unit Two   | 3.000000 |    18.99000 | 1051     | SALES_ORDER   | Test Order 1 | 2020-04-17 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |     77.9500 |
+| 1051     | 03                | RENTAL_ORDER_ITEM  | 02                | NULL        | Rental Item             | 3.000000 |     1.33000 | 1051     | SALES_ORDER   | Test Order 1 | 2020-04-17 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |     77.9500 |
+| 1061     | 02                | PRODUCT_ORDER_ITEM | 02                | DEMO_UNIT_5 | Demo Product Unit Five  | 1.000000 |    55.09000 | 1061     | SALES_ORDER   | Test Order 6 | 2019-04-24 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |     87.0700 |
+| 1064     | 02                | PRODUCT_ORDER_ITEM | 02                | DEMO_UNIT_2 | Demo Product Unit Two   | 2.000000 |     6.33000 | 1064     | SALES_ORDER   | Test Order 7 | 2022-01-09 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |     48.8700 |
+| 1102     | 04                | PRODUCT_ORDER_ITEM | 02                | DEMO_UNIT_3 | Demo Product Unit Three | 1.000000 |    14.99000 | 1102     | SALES_ORDER   | Test Order 3 | 2020-04-17 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |    129.9200 |
+| 1255     | 03                | PRODUCT_ORDER_ITEM | 02                | DEMO_UNIT_5 | Demo Product Unit Five  | 3.000000 |    10.99000 | 1255     | SALES_ORDER   | Test Order 5 | 2020-03-17 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |     75.9300 |
++----------+-------------------+--------------------+-------------------+-------------+-------------------------+----------+-------------+----------+---------------+--------------+-------------------------+----------------+-----------------+-------------------+---------
+
+20).List all OrderHeader details whose grandTotal is greater than the average grandTotal for all orders date 2020-04-17.
+
+select * from Order_Header where Grand_Total >any (select AVG(grand_total) from order_header GROUP BY Order_Date= '2020-04-17');
+
++----------+---------------+--------------+-------------------------+----------------+-----------------+-------------------+-----------------------+-------------+
+| ORDER_ID | ORDER_TYPE_ID | ORDER_NAME   | ORDER_DATE              | STATUS_ID      | CURRENCY_UOM_ID | PRODUCT_STORE_ID  | SALES_CHANNEL_ENUM_ID | GRAND_TOTAL |
++----------+---------------+--------------+-------------------------+----------------+-----------------+-------------------+-----------------------+-------------+
+| 1051     | SALES_ORDER   | Test Order 1 | 2020-04-17 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |     77.9500 |
+| 1061     | SALES_ORDER   | Test Order 6 | 2019-04-24 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |     87.0700 |
+| 1102     | SALES_ORDER   | Test Order 3 | 2020-04-17 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |    129.9200 |
+| 1255     | SALES_ORDER   | Test Order 5 | 2020-03-17 00:00:00.000 | ORDER_APPROVED | USD             | OMS_DEFAULT_STORE | WEB_SALES_CHANNEL     |     75.9300 |
++----------+---------------+--------------+-------------------------+----------------+-----------------+-------------------+-----------------------+-------------+
+
+
+21).List the RENTAL_ORDER_ITEM Order Item Details for each order.
+
+SELECT * FROM Order_Item WHERE Order_Item_Type_Id = 'rental_order_item';
++----------+-------------------+--------------------+-------------------+------------+------------------+----------+-------------+
+| ORDER_ID | ORDER_ITEM_SEQ_ID | ORDER_ITEM_TYPE_ID | SHIP_GROUP_SEQ_ID | PRODUCT_ID | ITEM_DESCRIPTION | QUANTITY | UNIT_AMOUNT |
++----------+-------------------+--------------------+-------------------+------------+------------------+----------+-------------+
+| 1051     | 03                | RENTAL_ORDER_ITEM  | 02                | NULL       | Rental Item      | 3.000000 |     1.33000 |
+| 1052     | 02                | RENTAL_ORDER_ITEM  | 01                | NULL       | Rental Item      | 1.000000 |     1.33000 |
+| 1102     | 03                | RENTAL_ORDER_ITEM  | 01                | NULL       | Rental Item      | 3.000000 |     2.33000 |
+| 1153     | 02                | RENTAL_ORDER_ITEM  | 01                | NULL       | Rental Item      | 1.000000 |     1.33000 |
+| 1153     | 04                | RENTAL_ORDER_ITEM  | 01                | NULL       | Rental Item      | 1.000000 |     2.33000 |
+| 1255     | 02                | RENTAL_ORDER_ITEM  | 01                | NULL       | Rental Item      | 3.000000 |     1.33000 |
++----------+-------------------+--------------------+-------------------+------------+------------------+----------+-------------+
+
+
+22).Find the Order details assigned to the facility with the “WebStoreWarehouse” value. Output the below fields for this query:
+
+SELECT OI.Order_Id, OI.Ship_Group_Seq_Id, OISG.Facility_Id, OISG.Customer_Party_Id,OI.Product_Id, OI.Item_Description, OI.Quantity FROM Order_Item OI INNER JOIN Order_Item_Ship_Group OISG ON OI.Order_Id = OISG.Order_Id WHERE OISG.Facility_Id='WebStoreWarehouse' GROUP BY OISG.customer_party_id;
+
+
+23).List the below Order Information for the orderId, 1153.
+
+select OISG.order_id,OISG.ship_group_seq_id,OISG.customer_party_id,P.first_name,P.last_name, OH.order_date, OI.order_item_seq_Id,OI.product_Id, OI.item_description,OI.unit_amount,OI.quantity, OH.grand_Total from person P inner join order_item_ship_group OISG on P.party_id=OISG.Customer_party_Id inner join order_item OI on OISG.order_Id=OI.order_Id inner join order_header OH on OI.order_Id=OH.order_Id where OH.order_Id = '1153'
++----------+-------------------+-------------------+------------+-----------+-------------------------+-------------------+-------------+-------------------------+-------------+----------+-------------+
+| order_id | ship_group_seq_id | customer_party_id | first_name | last_name | order_date              | order_item_seq_Id | product_Id  | item_description        | unit_amount | quantity | grand_Total |
++----------+-------------------+-------------------+------------+-----------+-------------------------+-------------------+-------------+-------------------------+-------------+----------+-------------+
+| 1153     | 01                | CustDemo4         | John       | Norvig    | 2020-04-19 00:00:00.000 | 01                | DEMO_UNIT_3 | Demo Product Unit Three |    14.99000 | 1.000000 |     31.6400 |
+| 1153     | 01                | CustDemo4         | John       | Norvig    | 2020-04-19 00:00:00.000 | 02                | NULL        | Rental Item             |     1.33000 | 1.000000 |     31.6400 |
+| 1153     | 01                | CustDemo4         | John       | Norvig    | 2020-04-19 00:00:00.000 | 03                | DEMO_UNIT_4 | Product Unit FourDemo   |    12.99000 | 1.000000 |     31.6400 |
+| 1153     | 01                | CustDemo4         | John       | Norvig    | 2020-04-19 00:00:00.000 | 04                | NULL        | Rental Item             |     2.33000 | 1.000000 |     31.6400 |
++----------+-------------------+-------------------+------------+-----------+-------------------------+-------------------+-------------+-------------------------+-------------+----------+-------------+
+
+24).List the below Order details for the customer partyId, CustDemo1.
+
+select OISG.order_Id, OISG.ship_group_seq_Id, OISG.customer_party_Id,OI.order_item_seq_id,OI.product_Id, OI.item_description,OI.unit_amount,OI.quantity,OH.grand_total from order_item_ship_group OISG inner join order_item OI on OISG.order_Id=OI.order_Id inner join order_header OH on OI.order_id=OH.order_Id where OISG.customer_party_id = 'custDemo1';
+
++----------+-------------------+-------------------+-------------------+-------------+-------------------------+-------------+----------+-------------+
+| order_Id | ship_group_seq_Id | customer_party_Id | order_item_seq_id | product_Id  | item_description        | unit_amount | quantity | grand_total |
++----------+-------------------+-------------------+-------------------+-------------+-------------------------+-------------+----------+-------------+
+| 1051     | 01                | CustDemo1         | 01                | DEMO_UNIT_1 | Demo Product Unit One   |    16.99000 | 1.000000 |     77.9500 |
+| 1051     | 01                | CustDemo1         | 02                | DEMO_UNIT_2 | Demo Product Unit Two   |    18.99000 | 3.000000 |     77.9500 |
+| 1051     | 01                | CustDemo1         | 03                | NULL        | Rental Item             |     1.33000 | 3.000000 |     77.9500 |
+| 1051     | 02                | CustDemo1         | 01                | DEMO_UNIT_1 | Demo Product Unit One   |    16.99000 | 1.000000 |     77.9500 |
+| 1051     | 02                | CustDemo1         | 02                | DEMO_UNIT_2 | Demo Product Unit Two   |    18.99000 | 3.000000 |     77.9500 |
+| 1051     | 02                | CustDemo1         | 03                | NULL        | Rental Item             |     1.33000 | 3.000000 |     77.9500 |
+| 1052     | 01                | CustDemo1         | 01                | DEMO_UNIT_3 | Demo Product Unit Three |    14.99000 | 1.000000 |     16.3200 |
+| 1052     | 01                | CustDemo1         | 02                | NULL        | Rental Item             |     1.33000 | 1.000000 |     16.3200 |
++----------+-------------------+-------------------+-------------------+-------------+-------------------------+-------------+----------+-------------+	
+
+25). List facilityId and total where total = sum of (orderItem.quantity X orderItem.unitAmount).
+
+mysql> select sum(OI.quantity*OI.unit_amount) as TOTAL from order_item_ship_group OISG inner join order_item OI on OISG.order_Id=OI.order_Id;
+
++-----------------+
+| TOTAL           |
++-----------------+
+| 887.44000000000 |
++-----------------+
+
